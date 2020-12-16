@@ -1,0 +1,70 @@
+server:
+  port: 10088
+spring:
+  application:
+    name: feignconsumer
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+  redis:
+    database: 14
+    host: ${REDIS_HOST:172.18.29.117}
+    port: ${REDIS_PORT:6379}
+    #password:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+      enabled: true
+
+eureka:
+  instance:
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+    prefer-ip-address: true
+    ip-address: 172.22.38.98
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:172.18.29.117}:${EUREKA_PORT:8761}/eureka/
+swagger:
+  enabled: true
+  base-package: com.yq.feignconsumer
+  title: Admin Back
+  version: 1.0.0.SNAPSHOT
+  description: 消费者 后端服务
+  contact:
+    name: feigndemo
+  global-operation-parameters:
+  - parameterType: header
+    name: Authorization
+    required: false
+    description: 头部信息
+    modelRef: String
+
+auth:
+  serviceId: topway-auth
+  user:
+    token-header: Authorization
+    limit-expire: 1440 # 一天过期
+  client:
+    id: topway-admin
+    secret: 123566
+    token-header: client-token
+admin:
+  serviceId: topway-admin
+
+feign:
+  hystrix:
+    enabled: true #开启熔断
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000 #超时10S后熔断降级
+
+
