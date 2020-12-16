@@ -13,7 +13,7 @@ import java.util.Map;
  * author：yq
  * date: 2020/12/15
  */
-@FeignClient(name = "feignprovider",configuration = {FeignApplyConfiguration.class})
+@FeignClient(name = "feignprovider",configuration = {FeignApplyConfiguration.class},fallback = HystrixClientFallback.class)
 public interface eurekaFeign {
 
     @RequestMapping(value = "/myFeign/eurekaFeign", method = RequestMethod.GET)
