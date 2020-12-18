@@ -41,25 +41,23 @@ swagger:
     required: false
     description: 头部信息
     modelRef: String
-
-auth:
-  serviceId: topway-auth
-  user:
-    token-header: Authorization
-    limit-expire: 1440 # 一天过期
-  client:
-    id: topway-admin
-    secret: 123566
-    token-header: client-token
-admin:
-  serviceId: topway-admin
+#
+#auth:
+#  serviceId: topway-auth
+#  user:
+#    token-header: Authorization
+#    limit-expire: 1440 # 一天过期
+#  client:
+#    id: topway-admin
+#    secret: 123566
+#    token-header: client-token
+#admin:
+#  serviceId: topway-admin
 feign:
+  sentinel:
+    enabled: true
   client:
     config:
       default:
         connectTimeout: 6000
         readTimeout: 6000
-        loggerLevel: basic
-#  hystrix:
-#    enabled: true #开启熔断
-

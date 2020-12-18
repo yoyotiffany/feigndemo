@@ -16,6 +16,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="FEIGN" options="-parameters" />
       <module name="feignconsumer" options="-parameters" />
+      <module name="feigndemo" options="-parameters" />
       <module name="feignprovider" options="-parameters" />
     </option>
   </component>

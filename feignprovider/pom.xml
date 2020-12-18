@@ -6,7 +6,7 @@
         <artifactId>feigndemo</artifactId>
         <groupId>com.yq</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+
     </parent>
 
     <groupId>com.yq</groupId>

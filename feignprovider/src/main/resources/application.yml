@@ -17,7 +17,9 @@ spring:
       max-file-size: 10MB
       max-request-size: 100MB
       enabled: true
-
+  cloud:
+    sentinel:
+      enabled: true
 eureka:
   instance:
     statusPageUrlPath: /info
@@ -26,7 +28,7 @@ eureka:
     ip-address: 172.22.38.98
   client:
     serviceUrl:
-      defaultZone: http://${EUREKA_HOST:172.18.29.116}:${EUREKA_PORT:8761}/eureka/
+      defaultZone: http://${EUREKA_HOST:172.18.29.117}:${EUREKA_PORT:8761}/eureka/
 swagger:
   enabled: true
   base-package: com.yq.feignprovider
@@ -42,18 +44,16 @@ swagger:
     description: 头部信息
     modelRef: String
 
-auth:
-  serviceId: topway-auth
-  user:
-    token-header: Authorization
-    limit-expire: 1440 # 一天过期
-  client:
-    id: topway-admin
-    secret: 123566
-    token-header: client-token
-admin:
-  serviceId: topway-admin
-
-
+#auth:
+#  serviceId: topway-auth
+#  user:
+#    token-header: Authorization
+#    limit-expire: 1440 # 一天过期
+#  client:
+#    id: topway-admin
+#    secret: 123566
+#    token-header: client-token
+#admin:
+#  serviceId: topway-admin
 
 

@@ -1,6 +1,7 @@
 package com.yq.feignprovider.controller;
 
-import com.gdtopway.auth.client.annotation.CheckUserToken;
+import com.yq.feignprovider.service.Imp.feignServiceImp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,41 +15,21 @@ import java.util.Map;
  * date: 2020/12/15
  */
 @RestController
-@CheckUserToken
-@RequestMapping("/myFeign")
+@RequestMapping("/provider")
+//@CheckUserToken
 public class testController {
 
-    @RequestMapping(value = "/urlFeign", method = RequestMethod.GET)
+    @Autowired
+    feignServiceImp feignServiceImp;
+
+    @RequestMapping(value = "/MyFeign", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String, Object> testUrlFeign() {
-        // 设置服务超时
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Map<String, Object> map = new HashMap<>();
-        map.put("code",200);
-        map.put("msg","success to get urlFeign data");
-        return map;
+    public Map<String, Object> MyFeign() {
+
+
+        return feignServiceImp.myFeign();
     }
 
-    @RequestMapping(value = "/eurekaFeign", method = RequestMethod.GET)
-    @ResponseBody
-    public Map<String, Object> eurekaFeign() {
-        //发生异常
-        //int a=9/0;
 
-       // 设置服务超时
-//        try {
-//            Thread.sleep(6000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-        Map<String, Object> map = new HashMap<>();
-        map.put("code",200);
-        map.put("msg","success to get eurekaFeign data");
-        return map;
-    }
 
 }
